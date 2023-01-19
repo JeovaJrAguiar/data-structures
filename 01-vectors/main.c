@@ -21,7 +21,6 @@ int searchVectorByElement(int vec[], int size, int element){
 	return -1;
 }
 
-
 // start a main menu
 void menu(){
 	int vector[10] = {0,0,0,0,0,0,0,0,0,0};
@@ -29,9 +28,10 @@ void menu(){
 	while(option != -1){
 		printf("\n\n ==== MENU ==== \n");
         	printf("1 - Print vector\n");
-		printf("2 - Insert elements in vector\n");
-		printf("3 - Search element in vector\n");
-		printf("4 - Exit\n");
+		printf("2 - Insert elements\n");
+		printf("3 - Search element\n");
+		printf("4 - Remove element\n");
+		printf("5 - Exit\n");
 	
 		printf("> ");
 		scanf(" %d", &option);
@@ -61,6 +61,18 @@ void menu(){
         			} 
 				break;
 			case 4:
+				aux = -1;
+				printf("\nElement to remove: \n");
+				scanf(" %d", &aux);
+				int indexSearched = searchVectorByElement(vector, 10, aux);
+
+				if(aux == -1){
+					printf("\nERROR - Element not found\n");
+				} else{
+					vector[indexSearched] = 0;
+					printf("\nOK - Element removed\n");
+				}	
+			case 5:
 				printf("\n ==== END MENU ====\n");
 				option = -1;
 				break;
