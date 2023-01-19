@@ -17,10 +17,11 @@ void printVector(int vec[], int size){
 // search element in a vector
 // return -1 if not found or int > 0 with repective index in vector
 int searchVectorByElement(int vec[], int size, int element){
-	for(int i = 0; i < size, i++)
+	for(int i = 0; i < size; i++)
 		if(vec[i] == element) return i;
 	return -1;
 }
+
 
 int main(){
         int aux = 0;
@@ -36,8 +37,16 @@ int main(){
         }
 
         // Search
-	printf("");
-	printVector(vector, 10);
-
+	aux = -1;
+	printf("Insert element for search: ");
+	scant(" %d", &aux);
+	int indexSearch = searchVectorByElement(vector, 10, aux);
+	
+	if(indexSearch == -1){ 
+		printf("\nElement not found. =( \n");	
+	}else{
+		printf("\nElement found. Index element: %d", indexSearch);
+	}
+	
         return 0;
 }
