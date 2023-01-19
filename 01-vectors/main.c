@@ -25,9 +25,9 @@ int searchVectorByElement(int vec[], int size, int element){
 // start a main menu
 void menu(){
 	int vector[10] = {0,0,0,0,0,0,0,0,0,0};
-	option = 0;
-	while(option == 0){
-		printf("\n ==== MENU ==== \n");
+	int option = 0, aux = -1;
+	while(option != -1){
+		printf("\n\n ==== MENU ==== \n");
         	printf("1 - Print vector\n");
 		printf("2 - Insert elements in vector\n");
 		printf("3 - Search element in vector\n");
@@ -39,17 +39,19 @@ void menu(){
 		switch(option){
 			case 1:
 				printVector(vector, 10);
+				break;
 			case 2:
 				for(int i = 0; i < 10; i++){
                 			printVector(vector, 10);
                 			printf("> ");
                 			scanf("%d", &aux );
                 			vector[i] = aux; 
-        			} 			
+        			} 
+				break;			
 			case 3: 
-				int aux = -1;
+				aux = -1;
         			printf("Insert element for search: ");
-        			scant(" %d", &aux);
+        			scanf(" %d", &aux);
         			int indexSearch = searchVectorByElement(vector, 10, aux);
         
         			if(indexSearch == -1){
@@ -57,13 +59,20 @@ void menu(){
         			}else{  
                 			printf("\nElement found. Index element: %d", indexSearch);
         			} 
+				break;
 			case 4:
-				printf("\n ==== END MENU ====\n);
-				option = 1;								
+				printf("\n ==== END MENU ====\n");
+				option = -1;
+				break;
+			default:
+				printf("\nInsert option valid.\n");
+				break;								
 		}
 	}
+}
 
 int main(){
 	menu();
+
         return 0;
 }
