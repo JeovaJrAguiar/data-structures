@@ -52,3 +52,34 @@ char removeNode(NO* root, int element){
 	free(noAux);
 	return "O";
 }
+
+void menu(){
+        int opt = -1;
+        do{
+                system("cls");
+                opt = optionInput();
+		switch(opt){
+			case 1:
+				break;
+			case 2:
+				break;
+			default:
+				break;
+		}
+        }while(opt == 0);                
+        printf("\n\nThanks for user Client System. :]\n");
+}
+
+int optionInput(){
+	int opt = -1;
+	printf("\n\n=== MENU ====");
+        printf("\n 1 - Register pacient");
+        printf("\n 2 - Call pacient");
+        printf("\n 3 - Exit");
+
+	printf("\n Option: ");
+	scanf(" %d", &opt);
+
+	if(opt == 1 || opt == 2 || opt == 3) return opt;
+	return -1;
+}

@@ -7,7 +7,8 @@
 #include <stdlib.h>
 #include "module.c"
 
+// Client System
 int main(){
+	menu();	
 	return 0;
 }
-
