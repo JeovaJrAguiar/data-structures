@@ -1,7 +1,7 @@
 // Aguiar - github.com/JeovaJrAguiar/data-structures
 // Federal University of Ceara - Crateus campus
 // Brazil
-// Lindek List
+// Linked List
 
 typedef struct NODE{
 	NO* prev;

@@ -12,8 +12,7 @@ NO* createNode(int value){
 	no->value = value;
 }
 
-// return "O" if Ok
-// return "N" if NO-OK
+// return "O" if OK or "N" if NO-OK
 char insertNode(NO* root, NO* element){
 	if(root == null || element == null) return "N";
 	
@@ -25,14 +24,31 @@ char insertNode(NO* root, NO* element){
 	do{
                 if(noAux.value > element.value) opt = "O";
 		noAux = noAux->next;
-	}while(opt != "O")
+	}while(opt != "O");
 	
 	element->next = &noAux;
 	element->prev = &noAux->prev;
 	noAux->prev->next = element;
 	noAux->prev = element;
 
-	return "O"
+	return "O";
 }
 
-char removeNode(NO* root, int element);
+// return "O" if OK or "N" if NO-OK
+char removeNode(NO* root, int element){
+	if(root == null) return "N";
+
+	NO* noAux = createNode();
+	noAux = root;
+	char opt = "I";
+	do{
+		if(noAux.value == element) break;
+		noAux = noAux->next;
+	}while(opt != "O");
+
+	noAux->next->prev = noAux->prev;
+	noAux->prev->next = noAux->next;
+	
+	free(noAux);
+	return "O";
+}
