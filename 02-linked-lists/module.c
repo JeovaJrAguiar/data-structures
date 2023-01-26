@@ -5,6 +5,7 @@
 
 #include "lib.h"
 
+// create a Node point based in a value from Input
 NO* createNode(int value){
 	NO* no = (NO*) malloc(sizeof(NO*));
 	no->prev = null;
@@ -53,6 +54,56 @@ char removeNode(NO* root, int element){
 	return "O";
 }
 
+int optionInput(){
+        int opt = -1;
+        printf("\n\n=== MENU ====");
+        printf("\n 1 - Register pacient");
+        printf("\n 2 - Call pacient");
+        printf("\n 3 - Exit");
+
+        printf("\n Option: ");
+        scanf(" %d", &opt);
+
+        if(opt == 1 || opt == 2 || opt == 3) return opt;
+        return -1;
+}
+
+// root is a root of list
+// opt define if preferential(2) or normal(1)
+void registerPacient(NO* root, int opt){
+	int aux = -1, auxWhile = -1, auxTicketPacient = 0;
+	NO* auxNode = (NO*) malloc(sizeof(NO*));
+	if(opt == 1){
+		opt = -2;
+		auxNode = root;
+		do{     
+			if(auxNode->next == null) break;
+			auxNode = auxNode->next;
+			opt = 1;
+        	}while(auxWhile == -2);
+		
+		auxTicketPacient = (auxNode.value)+1;
+		auxNode = createNode(auxTicketPacient);
+		if(insertNode(root, auxTicketPacient) == "N"){
+			printf("\n === ERROR ===\n");
+		}
+	}else{
+		opt = -2;
+                auxNode = root;
+                do{
+                        if(auxNode->prev == null) break;
+                        auxNode = auxNode->prev;
+                        opt = 1;
+                }while(auxWhile == -2);
+
+                auxTicketPacient = (auxNode.value)-1;
+                auxNode = createNode(auxTicketPacient);
+                if(insertNode(root, auxTicketPacient) == "N"){
+                        printf("\n === ERROR ===\n");
+                }	
+	}
+}
+
 void menu(){
         int opt = -1;
         do{
@@ -60,8 +111,23 @@ void menu(){
                 opt = optionInput();
 		switch(opt){
 			case 1:
+				opt 
+				do{
+					printf("\nNormal(1) or Preferential(2): ");
+                                	scanf(" %d", &opt);
+					if(opt == 1 || opt ==2){
+						opt = -2; 
+					}else{
+						printf("\nInvalid Option. Try Again.");
+						opt = 1;
+					}
+					
+				}while(opt != -2);
+				registerPacient(root, opt);
 				break;
 			case 2:
+				break;
+			case 3:
 				break;
 			default:
 				break;
@@ -70,16 +136,3 @@ void menu(){
         printf("\n\nThanks for user Client System. :]\n");
 }
 
-int optionInput(){
-	int opt = -1;
-	printf("\n\n=== MENU ====");
-        printf("\n 1 - Register pacient");
-        printf("\n 2 - Call pacient");
-        printf("\n 3 - Exit");
-
-	printf("\n Option: ");
-	scanf(" %d", &opt);
-
-	if(opt == 1 || opt == 2 || opt == 3) return opt;
-	return -1;
-}
