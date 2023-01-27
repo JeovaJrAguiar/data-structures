@@ -110,8 +110,7 @@ void menu(){
                 system("cls");
                 opt = optionInput();
 		switch(opt){
-			case 1:
-				opt 
+			case 1: 
 				do{
 					printf("\nNormal(1) or Preferential(2): ");
                                 	scanf(" %d", &opt);
@@ -126,6 +125,9 @@ void menu(){
 				registerPacient(root, opt);
 				break;
 			case 2:
+				do{
+				
+				}while(opt != -2);
 				break;
 			case 3:
 				break;
