@@ -1,4 +1,4 @@
-# Data Structures
+# Data Structures in C
 A little something about data structures. Vectors, Linked Lists, Queues, Stacks, Sorted vector, Mergesort,  Heapsort, Quicksort, Enumaration, Binary Trees.
 
 ## Summary
