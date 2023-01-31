@@ -35,7 +35,7 @@ char insertNode(NO* root, NO* element){
 	return "O";
 }
 
-// return "O" if OK or "N" if NO-OK
+// return "O" if sucess or "N" for error
 char removeNode(NO* root, int element){
 	if(root == null) return "N";
 
@@ -52,6 +52,15 @@ char removeNode(NO* root, int element){
 	
 	free(noAux);
 	return "O";
+}
+
+// return "O" if sucess or "N" for error
+char callClient(char isPreferential){
+	if(preferential == "Y"){
+		return "O";
+	}else{
+		return "N";
+	}
 }
 
 int optionInput(){
@@ -112,22 +121,20 @@ void menu(){
 		switch(opt){
 			case 1: 
 				do{
-					printf("\nNormal(1) or Preferential(2): ");
+					printf("\nPreferential(1) or No-Preferential(2): ");
                                 	scanf(" %d", &opt);
-					if(opt == 1 || opt ==2){
-						opt = -2; 
-					}else{
+					if(opt != 1 || opt !=2){
 						printf("\nInvalid Option. Try Again.");
 						opt = 1;
+					}else{
+						opt == -2;
 					}
 					
 				}while(opt != -2);
 				registerPacient(root, opt);
 				break;
 			case 2:
-				do{
-				
-				}while(opt != -2);
+				callClient();
 				break;
 			case 3:
 				break;

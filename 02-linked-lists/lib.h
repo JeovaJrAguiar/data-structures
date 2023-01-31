@@ -14,6 +14,6 @@ NO* createNode(int value);
 char insertNode(NO* root, NO* element);
 char removeNode(NO* root, int element);
 
-
 void menu(NO* root);
 int optionInput();
+char callClient(char isPreferential);
