@@ -15,8 +15,6 @@ NO* createNode(int value){
 
 // return "O" if OK or "N" if NO-OK
 char insertNode(NO* root, NO* element){
-	if(root == null || element == null) return "N";
-	
 	NO* noAux = createNode();
 	noAux = root;
 	int aux = element.value;
@@ -38,29 +36,50 @@ char insertNode(NO* root, NO* element){
 // return "O" if sucess or "N" for error
 char removeNode(NO* root, int element){
 	if(root == null) return "N";
+	if(element == 0) return "N";	
 
 	NO* noAux = createNode();
 	noAux = root;
 	char opt = "I";
-	do{
-		if(noAux.value == element) break;
-		noAux = noAux->next;
-	}while(opt != "O");
-
-	noAux->next->prev = noAux->prev;
-	noAux->prev->next = noAux->next;
 	
+	if(element > 0){
+		do{
+                	if(noAux.value == element) break;
+                	noAux = noAux->next;
+        	}while(opt != "O");
+
+        	noAux->next->prev = noAux->prev;
+        	noAux->prev->next = noAux->next;
+	
+	}else{
+		do{
+                	if(noAux.value == element) break;
+                	noAux = noAux->prev;
+        	}while(opt != "O");
+
+        	noAux->prev->next = noAux->next;
+        	noAux->next->prev = noAux->prev;
+	}
 	free(noAux);
 	return "O";
 }
 
 // return "O" if sucess or "N" for error
-char callClient(char isPreferential){
-	if(preferential == "Y"){
-		return "O";
-	}else{
+char callClient(No* root, int isPreferential){
+	if(root == null){
+		printf("\nNo exist preferential."); 
 		return "N";
 	}
+	
+	int auxElement = 0;
+	if(isPreferential == 1) {
+		auxElement = root->prev.value;
+		removeNode(root, auxElement);
+	} else{
+		auxElement = root->next.value;
+		removeNode(root, auxElement);
+	}
+        print("\nKey: %d", auxElement);
 }
 
 int optionInput(){
@@ -115,6 +134,7 @@ void registerPacient(NO* root, int opt){
 
 void menu(){
         int opt = -1;
+	No* root = (NO*) malloc(sizeof(No*));
         do{
                 system("cls");
                 opt = optionInput();
@@ -134,7 +154,18 @@ void menu(){
 				registerPacient(root, opt);
 				break;
 			case 2:
-				callClient();
+				do{
+                                        printf("\nPreferential(1) or No-Preferential(2): ");
+                                        scanf(" %d", &opt);
+                                        if(opt != 1 || opt !=2){
+                                                printf("\nInvalid Option. Try Again.");
+                                                opt = 1;
+                                        }else{
+                                                opt == -2;
+                                        }
+
+                                }while(opt != -2);
+				callClient(root, opt);
 				break;
 			case 3:
 				break;
